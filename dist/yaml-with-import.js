@@ -33,7 +33,7 @@ var YamlWithImport = function () {
          */
         value: function read(fileName) {
             var json = _yamljs2.default.load(fileName);
-            if (!!json && json !== null && !!json.imports) {
+            if (!!json && !!json.imports) {
                 var importedFile = {};
                 if (json.imports.length > 1) {
                     (function () {
@@ -49,7 +49,7 @@ var YamlWithImport = function () {
                     })();
                 } else {
                     importedFile = this.read(json.imports[0].resource);
-                    if (!!importedFile && importedFile != null) {
+                    if (!!importedFile) {
                         delete json.imports;
                         importedFile = _lodash2.default.merge(importedFile, json);
                     }
