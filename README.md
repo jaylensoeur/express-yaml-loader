@@ -1,10 +1,15 @@
 ##Yaml with Import
+[![CircleCI](https://circleci.com/gh/jaylensoeur/yaml-with-import/tree/master.svg?style=svg)](https://circleci.com/gh/jaylensoeur/yaml-with-import/tree/master)
 - Supports nested yaml import(s)
 - Supports multiple imports
 - Supports overriding with deep copying  
 
+## Install
+````
+npm i @jaylensoeur/yaml-with-import --save
+````
 
-##Example:
+##Example
 
 file1.yml
 
