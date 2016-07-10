@@ -8,7 +8,7 @@ class YamlWithImport {
      * @returns {Object}
      */
     read(fileName) {
-        let json = yaml.load(fileName);
+        const json = yaml.load(fileName);
         if (!!json && !!(json.imports)) {
             let importedFile = {};
             if (json.imports.length > 1) {
@@ -25,7 +25,7 @@ class YamlWithImport {
                 importedFile = this.read(json.imports[0].resource);
                 if (!!importedFile) {
                     delete json.imports;
-                    importedFile =  _.merge(importedFile, json);
+                    importedFile = _.merge(importedFile, json);
                 }
             }
 
