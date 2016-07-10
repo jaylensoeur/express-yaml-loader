@@ -49,14 +49,14 @@ es6
 import Yaml from '@jaylensoeur/yaml-with-import';
 
 const yaml = new Yaml();
-const json = yaml.read('file.yml');
+yaml.read('file.yml');
 ````
 
 es5
 ````
-const Yaml = require('@jaylensoeur/yaml-with-import').default;
+var Yaml = require('@jaylensoeur/yaml-with-import').default;
 
-const yaml = new Yaml();
-const json = yaml.read('file.yml');
+var yaml = new Yaml();
+yaml.read('file.yml');
 ````
 
