@@ -1,6 +1,6 @@
 {
   "name": "yaml-with-import",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "loads yaml file with support for nested imports",
   "main": "dist/yaml-with-import.js",
   "scripts": {
