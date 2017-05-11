@@ -10,6 +10,10 @@ var _yamljs = require('yamljs');
 
 var _yamljs2 = _interopRequireDefault(_yamljs);
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -49,25 +53,23 @@ var YamlWithImport = function () {
             if (!!json && !!json.imports) {
                 var importedFile = {};
                 if (json.imports.length > 1) {
-                    (function () {
-                        var tmp = {};
-                        _lodash2.default.forEach(json.imports, function (yamlDoc) {
-                            delete json.imports;
-                            if (!!_this.rootPath) {
-                                tmp = _this.read(_this.rootPath + yamlDoc.resource);
-                            } else {
-                                tmp = _this.read(yamlDoc.resource);
-                            }
+                    var tmp = {};
+                    _lodash2.default.forEach(json.imports, function (yamlDoc) {
+                        delete json.imports;
+                        if (!!_this.rootPath) {
+                            tmp = _this.read(_path2.default.resolve(_this.rootPath, yamlDoc.resource));
+                        } else {
+                            tmp = _this.read(yamlDoc.resource);
+                        }
 
-                            if (!!json && json != null) {
-                                tmp = _lodash2.default.merge(json, tmp);
-                            }
-                        });
-                        importedFile = tmp;
-                    })();
+                        if (!!json && json != null) {
+                            tmp = _lodash2.default.merge(json, tmp);
+                        }
+                    });
+                    importedFile = tmp;
                 } else {
                     if (!!this.rootPath) {
-                        importedFile = this.read(this.rootPath + json.imports[0].resource);
+                        importedFile = this.read(_path2.default.resolve(this.rootPath, json.imports[0].resource));
                     } else {
                         importedFile = this.read(json.imports[0].resource);
                     }
